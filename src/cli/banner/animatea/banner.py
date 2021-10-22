@@ -1,5 +1,3 @@
-import pathlib
-
 from src.enums import color, effect
 from src.cli.banner import AbstractBanner, Banner, DecorationContainer
 
