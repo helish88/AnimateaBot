@@ -1,7 +1,10 @@
 import typing
 
 
-__all__: tuple[str, ...] = ("AllowedColorType", "AllowedEffectType",)
+__all__: tuple[str, ...] = (
+    "AllowedColorType",
+    "AllowedEffectType",
+)
 
 
 AllowedColorType = typing.Literal[

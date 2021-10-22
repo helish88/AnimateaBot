@@ -9,9 +9,7 @@ if typing.TYPE_CHECKING:
 __all__: tuple[str, ...] = ("overload_error_message",)
 
 
-_DEFAULT_ERRMSG_TEMPLATE: typing.Final[
-    str
-] = "An error was thrown for the following reason -> "
+_DEFAULT_ERRMSG_TEMPLATE: typing.Final[str] = "An error was thrown for the following reason -> "
 
 
 def overload_error_message(*, template: str = _DEFAULT_ERRMSG_TEMPLATE) -> ClsDecorator:
@@ -30,4 +28,5 @@ def overload_error_message(*, template: str = _DEFAULT_ERRMSG_TEMPLATE) -> ClsDe
             # Creating arrows to highlight the error.
         )
         return cls
+
     return inner

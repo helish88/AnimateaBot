@@ -18,5 +18,5 @@ ignore_errors = true
 
 [tool.black]
 line-length = 110
-target-version = ['py310']
+target-version = ['py39']
 include = '\.pyi?$'

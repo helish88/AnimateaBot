@@ -25,6 +25,7 @@ def only(type_: type, /) -> ClsDecorator:
                     f"(Expected {type_}, got {type(value)})"
                 )
         return cls
+
     return inner
 
 

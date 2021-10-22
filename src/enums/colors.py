@@ -1,7 +1,11 @@
 from src import enum
 
 
-__all__: tuple[str, ...] = ("color", "effect", "background",)
+__all__: tuple[str, ...] = (
+    "color",
+    "effect",
+    "background",
+)
 
 
 def to_ansi(code: int) -> str:

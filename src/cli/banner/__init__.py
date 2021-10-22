@@ -3,4 +3,8 @@ from .interface import *
 from .impl import *
 
 
-__all__: tuple[str, ...] = ("DecorationContainer", "AbstractBanner", "Banner",)
+__all__: tuple[str, ...] = (
+    "DecorationContainer",
+    "AbstractBanner",
+    "Banner",
+)

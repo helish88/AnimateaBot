@@ -1,4 +1,7 @@
-__all__: tuple[str, ...] = ("is_dunder", "is_event",)
+__all__: tuple[str, ...] = (
+    "is_dunder",
+    "is_event",
+)
 
 
 def is_dunder(name: str) -> bool:

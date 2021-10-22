@@ -17,7 +17,10 @@ if typing.TYPE_CHECKING:
     _ClientT = typing.TypeVar("_ClientT", bound="TanjunClient")
 
 
-__all__: tuple[str, ...] = ("TanjunClient", "AnimateaBot",)
+__all__: tuple[str, ...] = (
+    "TanjunClient",
+    "AnimateaBot",
+)
 
 
 class TanjunClient(tanjun.Client):
@@ -28,8 +31,7 @@ class TanjunClient(tanjun.Client):
     def _find_modules(self, *, predicate: AnyCallableT) -> typing.Generator[str, typing.Any, None]:
         return (
             f"src.modules.{trim_filetype(m.stem)}"
-            for m
-            in recursive_find_path("src", modify=lambda p: p.glob("modules/*.py"))
+            for m in recursive_find_path("src", modify=lambda p: p.glob("modules/*.py"))
             if predicate(m)
         )
 
@@ -60,5 +62,7 @@ class AnimateaBot(hikari.GatewayBot, AnimateaBotProto):
         )
 
     def init_tanjun_client(self) -> None:
-        self.client: TanjunClient = TanjunClient.from_gateway_bot(self, set_global_commands=744099317836677161)
+        self.client: TanjunClient = TanjunClient.from_gateway_bot(
+            self, set_global_commands=744099317836677161
+        )
         self.client.load_modules()
