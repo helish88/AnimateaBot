@@ -7,7 +7,7 @@ if typing.TYPE_CHECKING:
     from src.typehints import MaybeNone, AnyCallableT
 
 
-__all__: tuple[str, ...] = ("recursive_find_path", "trim_filetype",)
+__all__: tuple[str, ...] = ("recursive_find_path", "trim_filetype", "get_cwd",)
 
 
 def recursive_find_path(
@@ -30,3 +30,7 @@ def trim_filetype(name: str, /) -> str:
     if name.endswith(".py"):
         return name[:-3]
     return name
+
+
+def get_cwd() -> str:
+    return str(pathlib.Path(__file__).parents[1]) + "\\"

@@ -1,4 +1,9 @@
 from src.cli.banner.animatea import AnimateaBanner
+from src.bot.main import AnimateaBot
 
 
-banner = AnimateaBanner().source.show()
+if __name__ == "__main__":
+    AnimateaBanner().source.show()
+
+    bot = AnimateaBot()
+    bot.initialize()

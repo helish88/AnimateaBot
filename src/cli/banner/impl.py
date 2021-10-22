@@ -10,7 +10,7 @@ if typing.TYPE_CHECKING:
 __all__: tuple[str, ...] = ("Banner",)
 
 
-@dataclasses.dataclass(kw_only=True)
+@dataclasses.dataclass()
 class Banner:
     raw_banner: str
     decorations: DecorationContainer

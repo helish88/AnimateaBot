@@ -7,6 +7,14 @@ show_column_numbers = true
 warn_no_return = false
 no_implicit_optional = false
 follow_imports = 'skip'
+ignore_missing_imports = true
+no_site_packages = true
+disallow_subclassing_any = false
+
+[[tool.mypy.overrides]]
+# Mypy has a lot of conflicts with third party libraries like tanjun.
+module = 'src.modules.*'
+ignore_errors = true
 
 [tool.black]
 line-length = 110

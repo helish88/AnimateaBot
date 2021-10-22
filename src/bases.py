@@ -1,14 +1,9 @@
 import typing
-import pathlib
 
 from src import errors
 
 
-__all__: tuple[str, ...] = ("Immutable", "CWD",)
-
-
-class CWD:
-    cwd: typing.ClassVar[str] = str(pathlib.Path(__file__).parents[1]) + "\\"
+__all__: tuple[str, ...] = ("Immutable",)
 
 
 class Immutable:

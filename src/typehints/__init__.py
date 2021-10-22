@@ -9,7 +9,7 @@ from .maybe import *
 __all__: tuple[str, ...] = (
     "AnyCallableT",
     "CallableShouldReturnT",
-    "ClsDecoratorT",
+    "ClsDecorator",
     "MaybeNone",
     "AllowedColorType",
     "AllowedEffectType",

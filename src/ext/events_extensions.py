@@ -5,14 +5,14 @@ import typing
 if typing.TYPE_CHECKING:
     import hikari
 
-    EventImpl = typing.Coroutine[typing.Any, typing.Any, typing.Any]
+    EventImpl = typing.Callable[..., typing.Coroutine[typing.Any, typing.Any, None]]
 
 
 __all__: tuple[str, ...] = ("mark",)
 
 
 def mark(event_impl: EventImpl) -> EventImpl:
-    event_impl.__mark__ = get_event_type(event_impl)
+    setattr(event_impl, "__mark__", get_event_type(event_impl))
     return event_impl
 
 

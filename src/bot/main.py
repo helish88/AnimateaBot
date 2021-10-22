@@ -62,7 +62,3 @@ class AnimateaBot(hikari.GatewayBot, AnimateaBotProto):
     def init_tanjun_client(self) -> None:
         self.client: TanjunClient = TanjunClient.from_gateway_bot(self, set_global_commands=744099317836677161)
         self.client.load_modules()
-
-
-bot = AnimateaBot()
-bot.initialize()

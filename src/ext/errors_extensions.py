@@ -3,7 +3,7 @@ from __future__ import annotations
 import typing
 
 if typing.TYPE_CHECKING:
-    from src.typehints import ClsDecoratorT
+    from src.typehints import ClsDecorator
 
 
 __all__: tuple[str, ...] = ("overload_error_message",)
@@ -14,9 +14,9 @@ _DEFAULT_ERRMSG_TEMPLATE: typing.Final[
 ] = "An error was thrown for the following reason -> "
 
 
-def overload_error_message(*, template: str = _DEFAULT_ERRMSG_TEMPLATE) -> ClsDecoratorT:
+def overload_error_message(*, template: str = _DEFAULT_ERRMSG_TEMPLATE) -> ClsDecorator:
     def inner(cls: type) -> type:
-        cls.__str__ = lambda self: (
+        cls.__str__ = lambda self: (  # type: ignore # mypy can't understand this.
             f"\n"
             # Skipping to new line.
             f"{template}"

@@ -1,12 +1,11 @@
 from __future__ import annotations
 
 import typing
+import pathlib
 import dataclasses
 import collections.abc
 
 import yaml
-
-from src.bases import CWD
 
 if typing.TYPE_CHECKING:
     from src.typehints import AnyCallableT
@@ -19,7 +18,7 @@ __all__: tuple[str, ...] = ("Yaml",)
 
 
 @dataclasses.dataclass()
-class Yaml(CWD):
+class Yaml:
     data: typing.Any
 
     def filter(self, predicate: _DictKeyOr[AnyCallableT] = None, /) -> typing.Any:
@@ -30,7 +29,11 @@ class Yaml(CWD):
         else:
             return self.data
 
+    @staticmethod
+    def cwd() -> str:
+        return str(pathlib.Path(__file__).parents[1]) + "\\"
+
     @classmethod
-    def load(cls, filename: typing.AnyStr, /) -> typing.Any:
-        with open(cls.cwd + (filename + ".yaml"), "r", encoding="utf-8") as file:
+    def load(cls, filename: str, /) -> typing.Any:
+        with open(cls.cwd() + (filename + ".yaml"), "r", encoding="utf-8") as file:
             return cls(yaml.safe_load(file))

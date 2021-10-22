@@ -1,7 +1,7 @@
 import typing
 
 
-__all__: tuple[str, ...] = ("ClsDecoratorT",)
+__all__: tuple[str, ...] = ("ClsDecorator",)
 
 
-ClsDecoratorT = typing.TypeVar("ClsDecoratorT", bound=typing.Callable[[type], type])
+ClsDecorator = typing.Callable[[type], type]

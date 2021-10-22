@@ -7,9 +7,7 @@ from src.bases import Immutable
 from src.inspections import is_dunder
 
 if typing.TYPE_CHECKING:
-    from src.typehints import ClsDecoratorT
-
-    SelfT = typing.TypeVar("SelfT", bound="EnumBase")
+    from src.typehints import ClsDecorator
 
 
 __all__: tuple[str, ...] = (
@@ -18,7 +16,7 @@ __all__: tuple[str, ...] = (
 )
 
 
-def only(type_: type, /) -> ClsDecoratorT:
+def only(type_: type, /) -> ClsDecorator:
     def inner(cls: type) -> type:
         for key, value in cls.__dict__.items():
             if not is_dunder(key) and not isinstance(value, type_):
@@ -27,18 +25,20 @@ def only(type_: type, /) -> ClsDecoratorT:
                     f"(Expected {type_}, got {type(value)})"
                 )
         return cls
-
     return inner
 
 
 class EnumBase(Immutable):
-    def __getitem__(self: SelfT, item: str) -> typing.Any:
+    if typing.TYPE_CHECKING:
+        __members__: dict[str, typing.Any]
+
+    def __getitem__(self, item: str) -> typing.Any:
         return self.__members__[item]
 
-    def __len__(self: SelfT) -> int:
+    def __len__(self) -> int:
         return len(self.__members__)
 
-    def __repr__(self: SelfT) -> str:
+    def __repr__(self) -> str:
         inner = ", ".join(f"{k}={v}" for k, v in self.__members__.items())
         return f"<Enum({inner})>"
 
@@ -49,7 +49,7 @@ class EnumMeta(type):
         name: str,
         bases: tuple[type, ...],
         attrs: dict[str, typing.Any],
-    ) -> type:
+    ) -> EnumMeta:
         try:
             filter_ = attrs["__filter__"]
             if not callable(filter_):
@@ -71,6 +71,3 @@ class EnumMeta(type):
 class Enum(metaclass=EnumMeta):
     if typing.TYPE_CHECKING:
         __members__: dict[str, typing.Any]
-
-    def __iter__(self) -> typing.Iterator[str]:
-        return iter(self.__members__.items())
