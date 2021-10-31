@@ -9,4 +9,4 @@ parser.add_argument(
 )
 namespace = parser.parse_args()
 if namespace.mypy:
-    os.system("mypy --no-site-packages --config-file=../pyproject.toml ../src")
+    os.system("mypy --no-site-packages --config-file=pyproject.toml src")

@@ -5,6 +5,6 @@ from .impl import *
 
 __all__: tuple[str, ...] = (
     "DecorationContainer",
-    "AbstractBanner",
+    "BannerInterface",
     "Banner",
 )

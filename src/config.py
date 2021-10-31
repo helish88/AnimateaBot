@@ -2,12 +2,11 @@ import os
 import typing
 import functools
 
-import dotenv
-
 from src import errors
 
-
+import dotenv
 dotenv.load_dotenv()
+
 
 __all__: tuple[str, ...] = ("EnvConfig",)
 

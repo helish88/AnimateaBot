@@ -9,5 +9,5 @@ __all__: tuple[str, ...] = (
 
 T = typing.TypeVar("T")
 
-AnyCallableT = typing.TypeVar("AnyCallableT", bound=typing.Callable[..., typing.Any])
+AnyCallableT = typing.TypeVar("AnyCallableT", bound=typing.Callable[[typing.Any], typing.Any])
 CallableShouldReturnT = typing.Callable[..., T]

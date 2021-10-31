@@ -3,26 +3,28 @@ from __future__ import annotations
 import abc
 import typing
 
+from src.classes import marks
+
 if typing.TYPE_CHECKING:
     from .impl import Banner
     from .customization import DecorationContainer
 
 
-__all__: tuple[str, ...] = ("AbstractBanner",)
+__all__: tuple[str, ...] = ("BannerInterface",)
 
 
-class AbstractBanner(metaclass=abc.ABCMeta):
-    @property
+class BannerInterface(metaclass=abc.ABCMeta):
+    @marks.classvar
     @abc.abstractmethod
-    def decorations(self) -> DecorationContainer:
+    def decorations(_) -> DecorationContainer:
         ...
 
-    @property
+    @marks.classvar
     @abc.abstractmethod
-    def raw(self) -> str:
+    def raw(_) -> str:
         ...
 
-    @property
+    @classmethod
     @abc.abstractmethod
-    def source(self) -> Banner:
+    def source(cls: typing.Type[BannerInterface]) -> Banner:
         ...

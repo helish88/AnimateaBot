@@ -13,6 +13,9 @@ __all__: tuple[str, ...] = (
     # Enums exceptions.
     "EnumError",
     "InappropriateTypeSpecifiedError",
+    # Inspections errors.
+    "MethodError",
+    "InvalidMethodError",
 )
 
 
@@ -41,3 +44,16 @@ class EnumError(AnimateaError):
 
 class InappropriateTypeSpecifiedError(EnumError):
     """Raised when the enumeration type does not match @only(type)."""
+
+
+# inspections errors
+class MethodError(AnimateaError):
+    """ """
+
+
+class InvalidMethodError(MethodError):
+    def __init__(self, *, expected: str) -> None:
+        self.expected = expected
+
+    def __str__(self) -> str:
+        return f"Method should be {self.expected}"

@@ -5,11 +5,11 @@ import typing
 import hikari
 import tanjun
 
+from src.utils import recursive_find_path, trim_filetype
 from src.config import EnvConfig
-from src.inspections import is_dunder
 from src.protos import AnimateaBotProto
 from src.bot.events import AnimateaEvents
-from src.utils import recursive_find_path, trim_filetype
+from src.inspections import is_dunder
 
 if typing.TYPE_CHECKING:
     from src.typehints import AnyCallableT

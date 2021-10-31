@@ -1,7 +1,7 @@
 import typing
 
 
-__all__: tuple[str, ...] = ("AnyValueDict",)
+__all__: tuple[str, ...] = ("AnyDict",)
 
 
-AnyValueDict = dict[str, typing.Any]
+AnyDict = dict[typing.Any, typing.Any]

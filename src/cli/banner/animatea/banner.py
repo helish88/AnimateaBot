@@ -1,13 +1,19 @@
+from __future__ import annotations
+
+import typing
+
 from src.enums import color, effect
-from src.cli.banner import AbstractBanner, Banner, DecorationContainer
+from src.classes import classes, marks
+from src.cli.banner import BannerInterface, Banner, DecorationContainer
 
 
 __all__: tuple[str, ...] = ("AnimateaBanner",)
 
 
-class AnimateaBanner(AbstractBanner):
-    @property
-    def decorations(self) -> DecorationContainer:
+@classes
+class AnimateaBanner(BannerInterface):
+    @marks.classvar
+    def decorations(_) -> DecorationContainer:
         return DecorationContainer(
             RESET=effect["RESET"],
             CYAN=color["CYAN"],
@@ -15,11 +21,11 @@ class AnimateaBanner(AbstractBanner):
             PURPLE=color["PURPLE"],
         )
 
-    @property
-    def raw(self) -> str:
+    @marks.classvar
+    def raw(_) -> str:
         with open("animatea_ascii_banner.txt", "r", encoding="utf-8") as file:
             return file.read()
 
-    @property
-    def source(self) -> Banner:
-        return Banner(raw_banner=self.raw, decorations=self.decorations)
+    @classmethod
+    def source(cls: typing.Type[AnimateaBanner]) -> Banner:
+        return Banner(raw_banner=cls.raw, decorations=cls.decorations)
