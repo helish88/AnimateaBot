@@ -1,7 +1,10 @@
 import typing
 
 
-__all__: tuple[str, ...] = ("MaybeNone", "MaybeNoReturn",)
+__all__: tuple[str, ...] = (
+    "MaybeNone",
+    "MaybeNoReturn",
+)
 
 
 T = typing.TypeVar("T")

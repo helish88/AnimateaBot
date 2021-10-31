@@ -1,7 +1,10 @@
 import enum
 
 
-__all__: tuple[str, ...] = ("EvalBaseEnum", "EvalNameEnum",)
+__all__: tuple[str, ...] = (
+    "EvalBaseEnum",
+    "EvalNameEnum",
+)
 
 
 class EvalNameEnum(str, enum.Enum):

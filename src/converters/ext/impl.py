@@ -25,5 +25,7 @@ def has_converter(*, converter: ConverterInterface) -> CallableShouldReturnT[Any
             else:
                 callback = func(*args, **kwargs)
             return converter.convert(callback)
+
         return wrapper
+
     return inner

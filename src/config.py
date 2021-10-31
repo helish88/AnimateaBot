@@ -5,6 +5,7 @@ import functools
 from src import errors
 
 import dotenv
+
 dotenv.load_dotenv()
 
 
